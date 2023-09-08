@@ -1,0 +1,4 @@
+﻿  Mystring.cpp
+c:\project\mfc\vc15\mystring\mystring\mystring.cpp(74): warning C4715: 'MyString::insert': not all control paths return a value
+  MyString.vcxproj -> C:\Project\MFC\VC15\MyString\Debug\MyString.exe
+  MyString.vcxproj -> C:\Project\MFC\VC15\MyString\Debug\MyString.pdb (Partial PDB)
