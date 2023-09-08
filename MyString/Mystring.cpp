@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string.h>
-
+#include <algorithm>
 class MyString {
 private:
 	char* string_content;
@@ -18,6 +18,7 @@ public:
 	int find(int find_from, MyString& str) const;
 	int find(int find_from, const char* str) const;
 	int find(int find_from, char c) const;
+	int compare(const MyString& str) const;
 	void print()	const;
 	void println() const;
 	void reserve(int size);
@@ -189,7 +190,7 @@ MyString& MyString::insert(int loc, char c) {
 }
 
 MyString& MyString::erase(int loc, int num) {
-	if (num < 0 || loc <  0 || loc > string_length) return *this;
+	if (num < 0 || loc <  0 || loc > string_length || num > string_length ) return *this;
 
 	for (int i = loc + num; i < string_length; i++) {
 		string_content[i - 1] = string_content[i];
@@ -217,6 +218,23 @@ int MyString::find(int find_from, const char* str) const {
 int MyString::find(int find_from, char c) const {
 	MyString temp(c);
 	return find(find_from, temp);
+}
+
+int MyString::compare(const MyString& str) const {
+	for (int i = 0; i < std::min(string_length, str.string_length); i++) {
+		if (string_content[i] > str.string_content[i])
+			return 1;
+
+		else if (string_content[i] < str.string_content[i])
+			return -1;
+	}
+
+	if (string_length == str.string_length) return 0;
+
+	else if (string_length >str.string_length)
+		return 1;
+
+	return -1;
 }
 
 void main()
